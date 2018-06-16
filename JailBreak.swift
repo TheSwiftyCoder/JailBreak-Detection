@@ -2,7 +2,7 @@ static func isJailbroken() -> Bool {
 		
 		guard let cydiaUrlScheme = NSURL(string: "cydia://package/com.example.package") else { return false }
 		if UIApplication.shared.canOpenURL(cydiaUrlScheme as URL) {
-			return false
+			return true
 		}
 		
 		#if arch(i386) || arch(x86_64)

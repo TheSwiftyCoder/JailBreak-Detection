@@ -1,4 +1,4 @@
-static func isJailbroken() -> Bool {
+@inline(__always) static func isJailbroken() -> Bool {
 		
 		guard let cydiaUrlScheme = NSURL(string: "cydia://package/com.example.package") else { return false }
 		if UIApplication.shared.canOpenURL(cydiaUrlScheme as URL) {
@@ -40,7 +40,7 @@ static func isJailbroken() -> Bool {
 		}
 	}
 	
-	static func canOpen(path: String) -> Bool {
+	@inline(__always) static func canOpen(path: String) -> Bool {
 		let file = fopen(path, "r")
 		guard file != nil else { return false }
 		fclose(file)
